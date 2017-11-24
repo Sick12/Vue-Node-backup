@@ -1,0 +1,22 @@
+body {
+background-color: rgba(0, 0, 0, 0.322);
+margin: 0;
+padding: 0;
+text-align: center;
+}
+
+ ul {
+    list-style: none;
+    
+} 
+
+a {
+    text-decoration: none;
+    display: flex;
+    margin: 0 auto;
+    float: right;
+    padding: 0 5% 0 5%;
+    border: 2px black solid;
+    border-radius: 5px;
+    
+} 
