@@ -15,8 +15,6 @@ Vue.prototype.$http = axios.create({
   // headers: {'Authorization': localStorage.getItem('Authorization')}
 
 });
-//let instance = axios.create({});
-
 
 /* eslint-disable no-new */
 //save in localStorage & if token exists put in header 

@@ -18,12 +18,12 @@ export default {
         //     console.log(error);
         // });
         axios.get('http://localhost:3000/user?token=' + token)
-        .then((response) => {
-            this.user = response.data;
-            console.log(response)
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+            .then((response) => {
+                this.user = response.data;
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 }

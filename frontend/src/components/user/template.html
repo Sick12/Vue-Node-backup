@@ -1,17 +1,23 @@
 <ul>
-    <li v-for="users in user">{{users}}</li>
+    <div v-if="!user">
+        <li>
+            <a href="http://localhost:8080/login">Login</a>
+        </li>
+        <li>
+            <a href="http://localhost:8080/register">Register</a>
+        </li>
+    </div>
+    <div v-else>
+        <li>
+            <a href="http://localhost:8080/logout">Logout</a>
+        </li>
+    </div>
+
+    <li>
+        <a href="http://localhost:8080/user">Existing users</a>
+    </li>
+    <br>
     <ul>
-            <li>
-                <a href="http://localhost:8080/login">Login</a>
-            </li>
-            <li>
-                <a href="http://localhost:8080/register">Register</a>
-            </li>
-            <li>
-                <a href="http://localhost:8080/logout">Logout</a>
-            </li>
-            <li>
-                <a href="http://localhost:8080/user">Existing users</a>
-            </li>
-        </ul>
+        <li v-for="users in user">{{users}}</li>
+    </ul>
 </ul>
