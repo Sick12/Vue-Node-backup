@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from '@/components/app/index.vue'
 import router from './router'
 import axios from 'axios'
+import jQuery from 'jQuery'
+global.jQuery = jQuery;
+let Bootstrap = require('bootstrap');
+import 'bootstrap/dist/css/bootstrap.css'
 
 //turn off Vue production tip
 

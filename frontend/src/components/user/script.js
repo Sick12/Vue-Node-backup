@@ -4,12 +4,13 @@ export default {
     name: 'users',
     data() {
         return {
-            user: []
+            user: [],
+            token: true
         }
     },
     mounted() {
         let token = localStorage.getItem('Authorization');
-        console.log(token);
+        //console.log(token);
         // axios.get('http://localhost:3000/user').then((response) => {
         //    // console.log(response.data);
         //     this.user = response.data;

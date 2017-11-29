@@ -23,6 +23,7 @@ export default {
             axios.post('http://localhost:3000/user/add', newUser)
                 .then((response) => {
                     console.log(response);
+                    this.$router.push('/login');
                 })
                 .catch((error) => {
                     console.log(error);

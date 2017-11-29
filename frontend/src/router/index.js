@@ -5,6 +5,7 @@ import login from '@/components/login'
 import register from '@/components/register'
 import user from '@/components/user'
 import logout from '@/components/logout'
+import test from '@/components/test'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/user',
       name: 'user',
       component: user
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: test
     }
   ]
 })
