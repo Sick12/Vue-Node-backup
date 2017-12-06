@@ -23,9 +23,11 @@ export default {
             axios.post('http://localhost:3000/user/add', newUser)
                 .then((response) => {
                     console.log(response);
+                    this.$toastr.success('User registered, you can login now!')
                     this.$router.push('/login');
                 })
                 .catch((error) => {
+                    this.$toastr.error('Could not be registered');
                     console.log(error);
                 });
         }

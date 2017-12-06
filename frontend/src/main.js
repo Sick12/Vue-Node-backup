@@ -9,9 +9,28 @@ global.jQuery = jQuery;
 let Bootstrap = require('bootstrap')
 import 'bootstrap/dist/css/bootstrap.css'
 import eventBus from './components/eventBus'
+import toastr from 'toastr'
 
 Vue.prototype.$bus = eventBus
+Vue.prototype.$toastr = toastr
 
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-top-center",
+  "preventDuplicates": true,
+  "onclick": null,
+  "showDuration": "1600",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 //turn off Vue production tip
 Vue.config.productionTip = false
 

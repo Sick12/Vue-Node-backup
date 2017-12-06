@@ -7,3 +7,7 @@ body {
 .form-group {
     margin: 1% 42% 0 42%;
 }
+
+.toast {
+    margin-top: 19% !important;
+}

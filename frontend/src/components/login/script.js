@@ -15,13 +15,14 @@ export default {
                 localStorage.setItem('Authorization', token);
                 this.$bus.$emit('logged', 'User logged');
                 this.$http.get('/user');
+                this.$toastr.success('You\'re now logged in', 'Title');
                 this.$router.push('/user');
                 //console.log(headers);
 
             })
-            .catch((error) => {
-               alert(error);
-            })
+                .catch((error) => {
+                    this.$toastr.error('Invalid credentials');
+                })
         }
         // test(){
         //     this.$http.get('/user').then((response) => {
