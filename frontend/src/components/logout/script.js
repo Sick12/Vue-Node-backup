@@ -7,7 +7,7 @@ export default {
             .then((response) => {
                 localStorage.removeItem('Authorization');
                 console.log(response);
-                //this.$router.push('/login');
+                this.$router.push('/login');
             })
             .catch((error) => {
                 console.log(error);

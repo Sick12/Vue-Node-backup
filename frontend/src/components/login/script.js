@@ -8,17 +8,19 @@ export default {
     },
     methods: {
         submit() {
-            this.$http.post('/user/login', {username: this.username, password: this.password}).then((response) => {
+            this.$http.post('/user/login', { username: this.username, password: this.password }).then((response) => {
                 //console.log(response);
                 let token = response.data.token;
-                if(!token)
-                    return this.$router.push('/login');
                 this.$http.defaults.headers.common['Authorization'] = token;
                 localStorage.setItem('Authorization', token);
+                this.$bus.$emit('logged', 'User logged');
                 this.$http.get('/user');
                 this.$router.push('/user');
                 //console.log(headers);
-                
+
+            })
+            .catch((error) => {
+               alert(error);
             })
         }
         // test(){

@@ -1,11 +1,13 @@
 import axios from 'axios'
+//import Vue from 'vue'
+
 
 export default {
     name: 'users',
     data() {
         return {
             user: [],
-            token: true
+            isLogged: this.checkIfLogged()
         }
     },
     mounted() {
@@ -18,6 +20,7 @@ export default {
         // .catch((error) => {
         //     console.log(error);
         // });
+
         axios.get('http://localhost:3000/user?token=' + token)
             .then((response) => {
                 this.user = response.data;
@@ -26,5 +29,20 @@ export default {
             .catch((error) => {
                 console.log(error);
             })
+    },
+    created() {
+        this.$bus.$on('logged', () => {
+            this.isLogged = this.checkIfLogged();
+        });
+    },
+    methods: {
+        checkIfLogged() {
+            let token = localStorage.getItem('Authorization');
+            if (token) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }

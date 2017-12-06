@@ -6,11 +6,13 @@ import router from './router'
 import axios from 'axios'
 import jQuery from 'jQuery'
 global.jQuery = jQuery;
-let Bootstrap = require('bootstrap');
+let Bootstrap = require('bootstrap')
 import 'bootstrap/dist/css/bootstrap.css'
+import eventBus from './components/eventBus'
+
+Vue.prototype.$bus = eventBus
 
 //turn off Vue production tip
-
 Vue.config.productionTip = false
 
 Vue.prototype.$http = axios.create({
