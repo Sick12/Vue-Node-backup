@@ -3,7 +3,8 @@ var app = express();
 var port = 3000;
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost/testDB', { useMongoClient: true });
+var db = mongoose.connect('mongodb://localhost/testDB', { useMongoClient: true }, function () { console.log('MongoDB started'); });
+
 var Schema = mongoose.Schema;
 var ejs = require('ejs');
 var path = require('path');
@@ -82,8 +83,3 @@ app.listen(port, function () {
     console.log('Server started on port: ' + port);
 });
 
-
-
-//STORE TOKEN CLIENT SIDE(PROBABLY EJS) USING localStorage (Storage)
-//How to use express variables in ejs
-//add Eventhandler(click) in login to store on click

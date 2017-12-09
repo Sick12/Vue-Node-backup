@@ -6,7 +6,8 @@ export default {
         axios.get('http://localhost:3000/user?token=' + token)
             .then((response) => {
                 localStorage.removeItem('Authorization');
-                console.log(response);
+                //console.log(response);
+                location.reload();
                 this.$toastr.success('Logged out successfuly');
                 this.$router.push('/login');
             })
@@ -15,4 +16,5 @@ export default {
                 console.log(error);
             })
     }
+
 }
