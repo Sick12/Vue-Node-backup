@@ -9,9 +9,10 @@ var ejs = require('ejs');
 var path = require('path');
 var fs = require('fs');
 var jwt = require('jsonwebtoken');
-//var expressJwt = require('express-jwt');
+var bcrypt = require('bcryptjs');
 
 //Import models
+
 var Cart = require('./models/carts');
 var Product = require('./models/products');
 var SaleItems = require('./models/saleItems');
@@ -20,8 +21,8 @@ var WishList = require('./models/wishlists');
 
 //app.locals.user = User;
 //Export variables globaly (to views) FUCKING EJS
-app.use(function(req, res, next){
-    var x ='test_global';
+app.use(function (req, res, next) {
+    var x = 'test_global';
     res.locals.user = x;
     next();
 });
@@ -30,15 +31,17 @@ app.use(function(req, res, next){
 //     res.locals.token = jwt.sign({ username: req.body.username }, secret, { expiresIn: '1h' });
 //     next();
 // });
-var allowCrossDomain = function(req, res, next) {
+
+
+var allowCrossDomain = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 }
 
-    app.use(allowCrossDomain);
-     
+app.use(allowCrossDomain);
+
 //Body-parser middleware
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -72,7 +75,7 @@ app.use('/wishlist', wishList);
 
 app.get('/', function (req, res) {
     res.render('index');
-    
+
 });
 
 app.listen(port, function () {
