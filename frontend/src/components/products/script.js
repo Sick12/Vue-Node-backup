@@ -1,34 +1,30 @@
 import axios from 'axios'
-//import Vue from 'vue'
-
 
 export default {
-    name: 'users',
+    name: 'products',
     data() {
         return {
-            users: [],
+            products: [],
+            search: '',
             isLogged: this.checkIfLogged()
         }
     },
     mounted() {
         let token = localStorage.getItem('Authorization');
-        //console.log(token);
-        // axios.get('http://localhost:3000/user').then((response) => {
-        //    // console.log(response.data);
-        //     this.user = response.data;
-        // })
-        // .catch((error) => {
-        //     console.log(error);
-        // });
-
-        axios.get('http://localhost:3000/user?token=' + token)
+        axios.get('http://localhost:3000/product?token=' + token)
             .then((response) => {
-                this.users = response.data;
-                console.log(response)
+                this.products = response.data;
             })
             .catch((error) => {
                 console.log(error);
             })
+    },
+    computed: {
+        filteredProducts: function () {
+            return this.products.filter((product) => {
+                return product.title.toLowerCase().match(this.search);
+            });
+        }
     },
     created() {
         this.$bus.$on('logged', () => {

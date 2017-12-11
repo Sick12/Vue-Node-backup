@@ -1,12 +1,12 @@
-<div class="form-group">
-    <h2>Login</h2>
-    <br>
-    <input type="text" class="form-control" placeholder="username" v-model="username">
-    <br>
-    <input type="password" class="form-control" placeholder="password" v-model="password">
-    <br>
-    <button class="btn btn-success" @click.prevent="submit()">Login</button>
-    <br>
-    <br>
-    <!-- <button @click="test">Test</button> -->
+<div>
+    <form class="form-material-animation">
+        <input type="text" name="username" required autocomplete="off" v-model="username">
+        <label for="username">Username</label>
+
+        <div class='divider'></div>
+
+        <input type="password" name="password" required autocomplete="off" v-model="password">
+        <label for="password">Password</label>
+        <button class="btn btn-success" @click.prevent="submit()">Login</button>
+    </form>
 </div>

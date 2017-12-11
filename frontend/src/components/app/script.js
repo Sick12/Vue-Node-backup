@@ -1,12 +1,11 @@
 import axios from 'axios'
-//import Vue from 'vue'
-
 
 export default {
     name: 'nav',
     data() {
         return {
-            isLogged: this.checkIfLogged()
+            isLogged: this.checkIfLogged(),
+            searchProduct: ''
         }
     },
     created() {
@@ -22,6 +21,14 @@ export default {
             } else {
                 return false;
             }
+        }
+    },
+    computed: {
+        filteredProducts: function () {
+            this.$router.push('/products');
+            return this.products.filter((product) => {
+                return product.title.toLowerCase().match(this.searchProduct);
+            });
         }
     }
 }

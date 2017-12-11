@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var Product = require('../models/products');
 var mongoose = require('mongoose');
-// var db = mongoose.connect('mongodb://localhost/testDB', {useMongoClient: true});
+var verifyToken = require('../config/jwt-middleware');
 
 
-router.get('/', function (req, res) {
+router.get('/', verifyToken, function (req, res) {
     // res.render('products');
 
     Product.find({}, function (err, storedProducts) {

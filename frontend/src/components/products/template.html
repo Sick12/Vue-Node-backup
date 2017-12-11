@@ -1,0 +1,15 @@
+<div>
+    <div v-if="!isLogged">
+        <h2>You must login in order to view this content</h2>
+    </div>
+    <div v-else>
+        <h2>Products:</h2>
+        <br>
+        <input type="search" placeholder="Search product..." v-model="search">
+        <br>
+        <br>
+        <ul>
+            <li v-for="product in filteredProducts">{{product.title}}</li>
+        </ul>
+    </div>
+</div>

@@ -6,7 +6,7 @@ import register from '@/components/register'
 import user from '@/components/user'
 import logout from '@/components/logout'
 import test from '@/components/test'
-
+import products from '@/components/products'
 Vue.use(Router)
 
 export default new Router({
@@ -41,6 +41,11 @@ export default new Router({
       path: '/test',
       name: 'test',
       component: test
+    },
+    {
+      path: '/products',
+      name: 'products',
+      component: products
     }
   ]
 })

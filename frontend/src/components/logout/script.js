@@ -7,9 +7,9 @@ export default {
             .then((response) => {
                 localStorage.removeItem('Authorization');
                 //console.log(response);
-                location.reload();
                 this.$toastr.success('Logged out successfuly');
                 this.$router.push('/login');
+                location.reload();
             })
             .catch((error) => {
                 this.$toastr.error('Something happened');
