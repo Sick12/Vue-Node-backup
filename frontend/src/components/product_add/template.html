@@ -1,0 +1,22 @@
+<div>
+    <div v-if="!isLogged">
+        <h2>Not authorized in mortii tai!</h2>
+    </div>
+    <div v-else>
+        <h3>Add product:</h3>
+        <form class="form-material-animation">
+            <input type="text" name="title" required autocomplete="off" v-model="Product.title">
+            <label for="title">Title</label>
+
+            <div class='divider'></div>
+            <input type="text" name="price" required autocomplete="off" v-model="Product.price">
+            <label for="price">Price</label>
+
+            <div class='divider'></div>
+            <!-- <textarea rows="4" cols="50" name="description" v-model="Product.description"></textarea> -->
+            <input type="text" name="description" required autocomplete="off" v-model="Product.description">
+            <label for="description">Description</label>
+            <button class="btn btn-success" @click.prevent="product_add()">Add Product</button>
+        </form>
+    </div>
+</div>

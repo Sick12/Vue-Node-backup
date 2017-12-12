@@ -5,7 +5,7 @@ export default {
     data() {
         return {
             isLogged: this.checkIfLogged(),
-            searchProduct: ''
+            search: ''
         }
     },
     created() {
@@ -21,14 +21,28 @@ export default {
             } else {
                 return false;
             }
-        }
-    },
-    computed: {
-        filteredProducts: function () {
-            this.$router.push('/products');
-            return this.products.filter((product) => {
-                return product.title.toLowerCase().match(this.searchProduct);
-            });
+        },
+        onEnter() {
+            this.$router.push({ path: 'products', query: { search: this.search } })
+            if (this.$route.name == 'products')
+                this.$bus.$emit('searchProduct', this.search);
         }
     }
+    // computed: {
+    //     filteredProducts: function () {
+    //         return this.products.filter((product) => {
+    //             return product.title.toLowerCase().match(this.search);
+    //         });
+    //     }
+    // },
+    // mounted() {
+    //     let token = localStorage.getItem('Authorization');
+    //     axios.get('http://localhost:3000/product?token=' + token)
+    //         .then((response) => {
+    //             this.products = response.data;
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         })
+    // }
 }

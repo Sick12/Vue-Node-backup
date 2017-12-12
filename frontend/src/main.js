@@ -4,8 +4,8 @@ import Vue from 'vue'
 import App from '@/components/app/index.vue'
 import router from './router'
 import axios from 'axios'
-import jQuery from 'jQuery'
-global.jQuery = jQuery;
+import jQuery from 'jquery'
+window.jQuery = jQuery;
 let Bootstrap = require('bootstrap')
 import 'bootstrap/dist/css/bootstrap.css'
 import eventBus from './components/eventBus'
@@ -42,7 +42,7 @@ Vue.prototype.$http = axios.create({
 });
 
 /* eslint-disable no-new */
-//save in localStorage & if token exists put in header 
+
 new Vue({
   el: '#app',
   router,

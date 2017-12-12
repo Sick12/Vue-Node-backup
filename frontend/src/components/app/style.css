@@ -60,6 +60,7 @@
   color: #43d300;
   left: initial;
   font-size: 14px;
+  pointer-events: all !important;
 }
 
 .search-form {

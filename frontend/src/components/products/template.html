@@ -4,12 +4,12 @@
     </div>
     <div v-else>
         <h2>Products:</h2>
-        <br>
-        <input type="search" placeholder="Search product..." v-model="search">
-        <br>
-        <br>
         <ul>
-            <li v-for="product in filteredProducts">{{product.title}}</li>
+            <li v-for="product in filteredProducts">{{ product.title }} - {{product.price}} $
+                <br> Description: {{product.description}}
+                <br>
+                <br>
+            </li>
         </ul>
     </div>
 </div>

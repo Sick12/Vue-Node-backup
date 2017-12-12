@@ -22,12 +22,7 @@ export default {
             })
                 .catch((error) => {
                     this.$toastr.error('Invalid credentials');
-                })
+                });
         }
-        // test(){
-        //     this.$http.get('/user').then((response) => {
-        //        console.log(response.data);
-        //     });
-        // }
     }
 }

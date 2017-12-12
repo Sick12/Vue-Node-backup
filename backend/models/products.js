@@ -10,23 +10,13 @@ var product = new Schema({
     price: {
         type: Number,
         required: true,
-        trim:true
+        trim: true
     },
     description: {
         type: String,
-        required:true,
+        //required: true,
         default: 'No description added yet.'
-    },
-    likes: {
-        type: Number,
-        default: 0
-    },
-    review: {
-        type: String,
-        default:'No review yet.'
     }
-
-
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Product', product);

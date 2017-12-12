@@ -7,6 +7,7 @@ import user from '@/components/user'
 import logout from '@/components/logout'
 import test from '@/components/test'
 import products from '@/components/products'
+import product_add from '@/components/product_add'
 Vue.use(Router)
 
 export default new Router({
@@ -46,6 +47,11 @@ export default new Router({
       path: '/products',
       name: 'products',
       component: products
+    },
+    {
+      path: '/product/add',
+      name:'productAdd',
+      component: product_add
     }
   ]
 })

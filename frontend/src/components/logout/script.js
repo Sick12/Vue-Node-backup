@@ -9,7 +9,8 @@ export default {
                 //console.log(response);
                 this.$toastr.success('Logged out successfuly');
                 this.$router.push('/login');
-                location.reload();
+                //location.reload();
+                this.$bus.$emit('logged');
             })
             .catch((error) => {
                 this.$toastr.error('Something happened');

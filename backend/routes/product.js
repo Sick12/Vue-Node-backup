@@ -27,7 +27,7 @@ router.get('/', verifyToken, function (req, res) {
     // });
 });
 
-router.get('/add', function (req, res) {
+router.get('/add', verifyToken, function (req, res) {
     res.render('products');
 });
 router.post('/add', function (req, res) {
@@ -42,9 +42,8 @@ router.post('/add', function (req, res) {
         var product = new Product();
         product.title = req.body.title;
         product.price = req.body.price;
-        product.description = req.body.description;
-        product.likes = req.body.likes;
-        product.review = req.body.review;
+        if (req.body.description.length > 0)
+            product.description = req.body.description;
         product.save(function (err, savedProduct) {
             if (err)
                 return res.status(500).send({ error: "Couldn't save the product" + product });
@@ -66,7 +65,6 @@ router.put('/:productId', function (req, res) {
         product.title = req.body.title;
         product.price = req.body.price;
         product.description = req.body.description;
-        // product.review = req.body.review;
         product.save(function (err) {
             if (err)
                 return res.status(500).send({ error: 'Error' });

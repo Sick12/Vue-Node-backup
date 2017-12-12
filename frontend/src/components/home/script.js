@@ -26,3 +26,13 @@
 //         }
 //     }
 // }
+
+import toastr from 'toastr'
+export default {
+
+    methods: {
+        testAlert:() => {
+            toastr.info(';awkd;oakdo;adk;ado;wadkwadk');
+        }
+    }
+}

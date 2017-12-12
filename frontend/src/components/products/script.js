@@ -14,6 +14,7 @@ export default {
         axios.get('http://localhost:3000/product?token=' + token)
             .then((response) => {
                 this.products = response.data;
+                
             })
             .catch((error) => {
                 console.log(error);
@@ -27,6 +28,10 @@ export default {
         }
     },
     created() {
+        this.$bus.$on('searchProduct', (search) => {
+            this.search = search;
+        });
+        this.search = this.$route.query.search;
         this.$bus.$on('logged', () => {
             this.isLogged = this.checkIfLogged();
         });

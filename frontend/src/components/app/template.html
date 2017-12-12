@@ -18,22 +18,25 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="http://localhost:8080/">Home</a>
+                            <router-link :to="{ name: 'Home'}">Home</router-link>
                         </li>
                         <li v-if="!isLogged">
-                            <a href="http://localhost:8080/register">Register</a>
+                            <router-link :to="{name: 'register'}">Register</router-link>
                         </li>
                         <li v-if="!isLogged">
-                            <a href="http://localhost:8080/login">Login</a>
+                            <router-link :to="{name: 'login'}">Login</router-link>
                         </li>
-                        <li v-else>
-                            <a href="http://localhost:8080/logout">Logout</a>
+                        <li v-if="isLogged">
+                            <router-link :to="{name: 'logout'}">Logout</router-link>
+                        </li>
+                        <li v-if="isLogged">
+                            <router-link :to="{name: 'products'}">Products</router-link>
+                        </li>
+                        <li v-if="isLogged">
+                            <router-link :to="{name: 'productAdd'}">Add Product</router-link>
                         </li>
                         <li>
-                            <a href="http://localhost:8080/products">Products</a>
-                        </li>
-                        <li>
-                            <a href="http://localhost:8080/user">Show users</a>
+                            <router-link :to="{name: 'user'}">Users</router-link>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reasons to live
@@ -63,13 +66,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 col-md-offset-3">
-                                <form action="" class="search-form">
+                                <div class="search-form">
                                     <div class="form-group has-feedback">
                                         <label for="search" class="sr-only">Search</label>
-                                        <input type="text" class="form-control" name="search" id="search" placeholder="Search in Products..." v-model="searchProduct">
-                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        <input type="text" class="form-control" name="search" id="search" placeholder="Search in Products..." v-model="search">
+                                        <span class="glyphicon glyphicon-search form-control-feedback" @click="onEnter"></span>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -25,7 +25,7 @@ var user = new Schema({
         }
 
 
-});
+}, { timestamps: true });
 
 user.pre('save', function (next) {
     var aUser = this;
