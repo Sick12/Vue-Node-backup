@@ -80,7 +80,7 @@ router.get('/profile', function (req, res) {
     res.send('Profile page');
 });
 
-router.put('/profile/:userId', function (req, res) {
+router.put('/profile/:userId', verifyToken, function (req, res) {
     User.findByIdAndUpdate({ _id: req.params.userId }, { username: req.body.username, email: req.body.email }, function (err, user) {
         if (err)
             return res.status(500).send({ error: err });

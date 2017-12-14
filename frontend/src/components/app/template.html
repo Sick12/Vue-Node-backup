@@ -33,6 +33,9 @@
                             <router-link :to="{name: 'products'}">Products</router-link>
                         </li>
                         <li v-if="isLogged">
+                            <router-link :to="{name: 'product_edit'}">Edit Products</router-link>
+                        </li>
+                        <li v-if="isLogged">
                             <router-link :to="{name: 'productAdd'}">Add Product</router-link>
                         </li>
                         <li>
@@ -61,6 +64,9 @@
                                     <a href="#">None</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li v-if="isLogged" id="myProfile">
+                            <router-link :to="{name: 'user_profile'}">Profile</router-link>
                         </li>
                     </ul>
                     <div class="container">

@@ -8,6 +8,9 @@ import logout from '@/components/logout'
 import test from '@/components/test'
 import products from '@/components/products'
 import product_add from '@/components/product_add'
+import product_edit from '@/components/product_edit'
+import user_profile from '@/components/user_profile'
+
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +55,16 @@ export default new Router({
       path: '/product/add',
       name:'productAdd',
       component: product_add
+    },
+    {
+      path: '/product/edit',
+      name: 'product_edit',
+      component: product_edit
+    },
+    {
+      path: '/user_profile',
+      name: 'user_profile',
+      component: user_profile
     }
   ]
 })

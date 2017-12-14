@@ -10,6 +10,7 @@ let Bootstrap = require('bootstrap')
 import 'bootstrap/dist/css/bootstrap.css'
 import eventBus from './components/eventBus'
 import toastr from 'toastr'
+import moment from 'moment'
 
 Vue.prototype.$bus = eventBus
 Vue.prototype.$toastr = toastr

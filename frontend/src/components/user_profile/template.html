@@ -1,0 +1,28 @@
+<div>
+    <!-- <div v-if="!isLogged">
+        <h3>You're not logged in</h3>
+    </div> -->
+
+    <!-- <div v-if="isLogged"> -->
+    <h3>Edit profile</h3>
+    <div v-for="user in users">{{user.username}}
+        <form class="form-material-animation">
+            <input type="text" name="username" required autocomplete="off">
+            <label for="username">Username</label>
+
+            <div class='divider'></div>
+
+            <input type="email" name="email" required autocomplete="off">
+            <label for="username">E-mail</label>
+
+            <div class='divider'></div>
+
+            <input type="password" name="password" required autocomplete="off">
+            <label for="password">Password</label>
+            <button class="btn btn-success">Update</button>
+            <button class="btn btn-danger" @click="deleteUser(user, user._id)">Delete</button>
+        </form>
+    </div>
+    <!-- </div> -->
+
+</div>

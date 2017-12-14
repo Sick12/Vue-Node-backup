@@ -2,11 +2,16 @@
     <div v-if="!isLogged">
         <h2>You must login in order to view this content</h2>
     </div>
-    <div v-else>
+    <div v-if="isLogged">
         <h2>Products:</h2>
         <ul>
             <li v-for="product in filteredProducts">{{ product.title }} - {{product.price}} $
+                <button @click="updateProduct()" class="btn btn-success">Update</button>
                 <br> Description: {{product.description}}
+                <br> {{product._id}}
+                <br>
+                <button class="btn btn-danger" @click="deleteProduct(product, product._id)">Delete</button>
+                <br>
                 <br>
                 <br>
             </li>

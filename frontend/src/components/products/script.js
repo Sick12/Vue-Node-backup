@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import toastr from 'toastr'
 export default {
     name: 'products',
     data() {
@@ -14,7 +14,7 @@ export default {
         axios.get('http://localhost:3000/product?token=' + token)
             .then((response) => {
                 this.products = response.data;
-                
+
             })
             .catch((error) => {
                 console.log(error);
@@ -44,6 +44,34 @@ export default {
             } else {
                 return false;
             }
+        },
+        deleteProduct(products, productId, index) {
+            var answer = confirm('Are you sure you want to delete this product?');
+            if (answer) {
+                axios.delete('http://localhost:3000/product/' + productId)
+                    .then((response) => {
+                        this.products.splice(index, 1);
+                        // toastr.success('Product deleted successfully');
+                        //console.log(response.data);
+                        window.location.reload();
+                    })
+
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            }
+            //toastr.info('Product wasn\'t deleted');
+            alert('Wasn\'t deleted');
+
+        },
+        updateProduct(products, productId) {
+            axios.put('http://localhost:3000/product/' + productId)
+                .then((response) => {
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
         }
     }
 }
