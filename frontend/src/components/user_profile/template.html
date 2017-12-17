@@ -3,15 +3,20 @@
         <h3>You're not logged in</h3>
     </div> -->
 
-    <!-- <div v-if="isLogged"> -->
-    <h3>Edit profile</h3>
-    <div v-for="user in users">{{user.username}}
-        <form class="form-material-animation">
+    <div>
+        <router-link class="btn btn-primary pull-right" to="/user">Back</router-link>
+        <h3>{{user.username}}'s profile</h3>
+        <router-link class="btn btn-primary" :to="/user_update/+user._id">Edit</router-link>
+        <button class="btn btn-danger" @click="deleteUser(user._id)">Delete</button>
+        <ul class="list-group">
+            <li class="glyphicon glyphicon-user list-group-item"> {{user.username}}</li>
+            <li class="glyphicon glyphicon-envelope list-group-item"> {{user.email}}</li>
+            <li class="glyphicon glyphicon-lock list-group-item"> {{user.password}}</li>
+        </ul>
+        <!-- <form class="form-material-animation">
             <input type="text" name="username" required autocomplete="off">
             <label for="username">Username</label>
-
             <div class='divider'></div>
-
             <input type="email" name="email" required autocomplete="off">
             <label for="username">E-mail</label>
 
@@ -19,10 +24,7 @@
 
             <input type="password" name="password" required autocomplete="off">
             <label for="password">Password</label>
-            <button class="btn btn-success">Update</button>
-            <button class="btn btn-danger" @click="deleteUser(user, user._id)">Delete</button>
-        </form>
-    </div>
-    <!-- </div> -->
 
+        </form> -->
+    </div>
 </div>

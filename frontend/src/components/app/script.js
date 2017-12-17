@@ -22,27 +22,11 @@ export default {
                 return false;
             }
         },
-        onEnter() {
+        searchProducts() {
             this.$router.push({ path: 'products', query: { search: this.search } })
             if (this.$route.name == 'products')
                 this.$bus.$emit('searchProduct', this.search);
+            //if it matches a username redirect to users page instead
         }
     }
-    // computed: {
-    //     filteredProducts: function () {
-    //         return this.products.filter((product) => {
-    //             return product.title.toLowerCase().match(this.search);
-    //         });
-    //     }
-    // },
-    // mounted() {
-    //     let token = localStorage.getItem('Authorization');
-    //     axios.get('http://localhost:3000/product?token=' + token)
-    //         .then((response) => {
-    //             this.products = response.data;
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
-    // }
 }

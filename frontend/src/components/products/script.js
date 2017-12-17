@@ -21,7 +21,7 @@ export default {
             })
     },
     computed: {
-        filteredProducts: function () {
+        filteredProducts() {
             return this.products.filter((product) => {
                 return product.title.toLowerCase().match(this.search);
             });
@@ -51,8 +51,6 @@ export default {
                 axios.delete('http://localhost:3000/product/' + productId)
                     .then((response) => {
                         this.products.splice(index, 1);
-                        // toastr.success('Product deleted successfully');
-                        //console.log(response.data);
                         window.location.reload();
                     })
 
@@ -61,7 +59,7 @@ export default {
                     })
             }
             //toastr.info('Product wasn\'t deleted');
-            alert('Wasn\'t deleted');
+            alert('Action cancelled');
 
         },
         updateProduct(products, productId) {

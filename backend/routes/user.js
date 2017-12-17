@@ -22,6 +22,17 @@ router.get('/', verifyToken, function (req, res) {
 
 });
 
+router.get('/oneUser/:userId', function (req, res) {
+    User.findOne({ _id: req.params.userId }, function (err, storedUser) {
+        if (err) {
+            return res.status(500).send({ error: 'No users found' });
+        } else {
+            return res.status(200).send(storedUser);
+        }
+    });
+
+});
+
 router.get('/add', function (req, res) {
     res.render('register');
 });
@@ -80,7 +91,7 @@ router.get('/profile', function (req, res) {
     res.send('Profile page');
 });
 
-router.put('/profile/:userId', verifyToken, function (req, res) {
+router.put('/update-user/:userId', function (req, res) {
     User.findByIdAndUpdate({ _id: req.params.userId }, { username: req.body.username, email: req.body.email }, function (err, user) {
         if (err)
             return res.status(500).send({ error: err });
@@ -94,7 +105,7 @@ router.put('/profile/:userId', verifyToken, function (req, res) {
     });
 });
 
-router.delete('/profile/:userId', function (req, res) {
+router.delete('/delete-user/:userId', function (req, res) {
     User.findByIdAndRemove({ _id: req.params.userId }, function (err, user) {
         if (err)
             return res.status(500).send({ error: 'Invalid user ID' });

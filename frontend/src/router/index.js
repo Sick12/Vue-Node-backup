@@ -10,6 +10,7 @@ import products from '@/components/products'
 import product_add from '@/components/product_add'
 import product_edit from '@/components/product_edit'
 import user_profile from '@/components/user_profile'
+import user_update from '@/components/user_update'
 
 Vue.use(Router)
 
@@ -53,7 +54,7 @@ export default new Router({
     },
     {
       path: '/product/add',
-      name:'productAdd',
+      name: 'productAdd',
       component: product_add
     },
     {
@@ -62,9 +63,14 @@ export default new Router({
       component: product_edit
     },
     {
-      path: '/user_profile',
+      path: '/user_profile/:id',
       name: 'user_profile',
       component: user_profile
+    },
+    {
+      path: '/user_update/:id',
+      name: 'user_update',
+      component: user_update
     }
   ]
 })

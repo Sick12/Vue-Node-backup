@@ -1,0 +1,17 @@
+<div>
+    <form class="form-material-animation">
+        <input type="text" name="username" required autocomplete="off" v-model="user.username">
+        <label for="username">Username</label>
+
+        <div class='divider'></div>
+
+        <input type="email" name="email" placeholder="email" v-model="user.email">
+
+
+        <div class='divider'></div>
+
+        <input type="password" name="password" required autocomplete="off" v-model="user.password">
+        <label for="password">Password</label>
+        <button class="btn btn-success" @click.prevent="updatedUser(user._id)">Update</button>
+    </form>
+</div>

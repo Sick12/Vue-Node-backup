@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <div v-if="!isLogged">
         <h1>Not authorized</h1>
     </div>
@@ -7,5 +7,34 @@
         <ol>
             <li v-for="user in users">{{user}}</li>
         </ol>
+    </div>
+</div> -->
+<div>
+    <div v-if="!isLogged">
+        <h2>Not authorized</h2>
+    </div>
+    <div v-if="isLogged">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>E-mail</th>
+                    <th>Password</th>
+                    <th>Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="user in users">
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.password}}</td>
+                    <td>{{user._id}}</td>
+                    <td>
+                        <router-link class="btn btn-info" :to="/user_profile/+user._id"> View
+                        </router-link>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
