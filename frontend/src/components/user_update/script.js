@@ -22,7 +22,7 @@ export default {
                     console.log(error);
                 })
         },
-        updatedUser(userId) {
+        updatedUser() {
             let update_User = {
                 username: this.user.username,
                 email: this.user.email,
@@ -37,6 +37,7 @@ export default {
 
                 })
                 .catch((error) => {
+                    toastr.error('E-mail or username already exists, choose another');
                     console.log(error);
                 })
         }

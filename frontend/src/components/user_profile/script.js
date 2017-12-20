@@ -6,11 +6,6 @@ export default {
     data() {
         return {
             user: '',
-            // updateUser:{
-            //     username: '',
-            //     email:'',
-            //     password:''
-            // },
             isLogged: this.checkIfLogged()
         }
     },
@@ -55,7 +50,6 @@ export default {
             if (confirmDelete) {
                 axios.delete('http://localhost:3000/user/delete-user/' + userId)
                     .then((response) => {
-                        //this.users.splice(index, 1);
                         this.$router.push('/user');
                         toastr.success('User deleted');
 
@@ -65,22 +59,5 @@ export default {
                     })
             }
         }
-        // updatedUser(userId) {
-        //     let update_User = {
-        //         username: this.username,
-        //         email: this.email,
-        //         password: this.password
-        //     };
-        //     axios.put('http://localhost:3000/user/update-user/' + userId, update_User)
-        //         .then((response) => {
-        //             console.log(update_User);
-
-
-        //         })
-        //         .catch((error) => {
-        //             console.log(update_User);
-        //             console.log(error);
-        //         })
-        // }
     }
 }

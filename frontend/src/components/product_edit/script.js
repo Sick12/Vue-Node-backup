@@ -1,26 +1,32 @@
-// import axios from 'axios'
+import axios from 'axios'
+import toastr from 'toastr'
 
-// export default {
-//     name: "product_add",
-//     data() {
-//         return {
-//             isLogged: this.checkIfLogged()
-//         }
-//     },
-//     created() {
-//         this.$bus.$on('logged', () => {
-//             this.isLogged = this.checkIfLogged();
-//         });
-//     },
-//     methods: {
-//         checkIfLogged() {
-//             let token = localStorage.getItem('Authorization');
-//             if (token) {
-//                 return true;
-//             } else {
-//                 return false;
-//             }
-//         }
-//     }
-// }
+export default {
+    name: 'product_edit',
+    data() {
+        return {
+            product: ''
+        }
+    },
+    created() {
+        this.fetchProduct(this.$route.params.id);
+    },
+    methods: {
+        fetchProduct(id) {
+            //console.log(id);
+            axios.get('http://localhost:3000/product/one-product/' + id)
+                .then((response) => {
+                    this.product = response.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        deleteProduct() {
 
+        },
+        updateProduct() {
+
+        }
+    }
+}

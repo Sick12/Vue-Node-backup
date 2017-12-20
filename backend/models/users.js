@@ -32,15 +32,20 @@ user.pre('save', function (next) {
     //console.log(aUser);
 
     //only hash the password if it has been modified (or is new)
-    if (!aUser.isModified('password'))
+    if (!aUser.isModified('password')) {
+        //console.log('Inside NOT modified!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         return next();
+    }
+
 
     //generate a salt
     bcrypt.genSalt(10, function (err, salt) {
+        //console.log('reached salt');
         if (err)
             return next(err);
         //hash the fucking password
         bcrypt.hash(aUser.password, salt, function (err, hash) {
+            //console.log('reached hash');
             if (err)
                 return next(err);
             //override the fucking password with the hashed one
@@ -52,6 +57,7 @@ user.pre('save', function (next) {
 });
 
 user.methods.comparePassword = function (thePassword, callback) {
+    //console.log('reached COMPAREPASSWORD');
     bcrypt.compare(thePassword, this.password, function (err, isMatch) {
         if (err)
             return callback(err);

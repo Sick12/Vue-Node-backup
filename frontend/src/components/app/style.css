@@ -23,7 +23,7 @@
 .container {
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-left: 200px;
+  /* padding-left: 200px; */
 }
 
 @media only screen and (max-width: 766px) {

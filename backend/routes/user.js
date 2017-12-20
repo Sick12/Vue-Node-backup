@@ -44,9 +44,7 @@ router.post('/add', function (req, res) {
                 return res.status(500).send({ error: 'User ' + doc[i].username + ' or email address ' + doc[i].email + ' already exists' });
                 break;
             }
-            //console.log(doc[i].title);
         }
-
         var user = new User();
         user.username = req.body.username;
         user.email = req.body.email;
@@ -72,16 +70,14 @@ router.post('/login', function (req, res) {
             //return res.status(404).send({ error: 'Invalid username or password: ' + req.body.username });
             return res.status(500).send({ error: 'Invalid credentials' });
         user.comparePassword(req.body.password, function (err, isMatch) {
-            if (err) {
-            } else {
-                if (!isMatch)
-                    return res.status(500).send({ error: 'Invalid password' });
-                var token = jwt.sign({ username: req.body.username }, secret, { expiresIn: '1h' });
-                return res.json({
-                    token: token
-                });
-            }
-
+            if (err)
+                throw err;
+            if (!isMatch)
+                return res.status(500).send({ error: 'Invalid password' });
+            var token = jwt.sign({ username: req.body.username }, secret, { expiresIn: '1h' });
+            return res.json({
+                token: token
+            });
         });
     });
 });
@@ -91,18 +87,32 @@ router.get('/profile', function (req, res) {
     res.send('Profile page');
 });
 
-router.put('/update-user/:userId', function (req, res) {
-    User.findByIdAndUpdate({ _id: req.params.userId }, { username: req.body.username, email: req.body.email }, function (err, user) {
+router.put('/update-user/:userId', function (req, res) { //replace with findOne and handle token expiration (simply delete token)
+    User.findOne({ _id: req.params.userId }, function (err, user) {
         if (err)
             return res.status(500).send({ error: err });
         if (!user)
             return res.status(404).send({ error: 'User not found' });
-        user.save(function (err, updateUser) {
+        user.username = req.body.username;
+        user.email = req.body.email;
+        user.password = req.body.password;
+        user.save(function (err) {
             if (err)
                 return res.status(500).send({ error: err });
             return res.status(200).send({ success: 'User updated' });
         });
     });
+    // User.findByIdAndUpdate({ _id: req.params.userId }, { username: req.body.username, email: req.body.email, password: req.body.password }, function (err, user) {
+    //     if (err)
+    //         return res.status(500).send({ error: err });
+    //     if (!user)
+    //         return res.status(404).send({ error: 'User not found' });
+    //     user.save(function (err, updateUser) {
+    //         if (err)
+    //             return res.status(500).send({ error: err });
+    //         return res.status(200).send({ success: 'User updated' });
+    //     });
+    // });
 });
 
 router.delete('/delete-user/:userId', function (req, res) {

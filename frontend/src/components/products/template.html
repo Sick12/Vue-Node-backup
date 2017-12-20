@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <div v-if="!isLogged">
         <h2>You must login in order to view this content</h2>
     </div>
@@ -17,4 +17,34 @@
             </li>
         </ul>
     </div>
-</div>
+</div> -->
+
+<div>
+        <div v-if="!isLogged">
+            <h2>Not authorized</h2>
+        </div>
+        <div v-if="isLogged">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="product in filteredProducts">
+                        <td>{{product.title}}</td>
+                        <td>{{product.price}} $</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product._id}}</td>
+                        <td>
+                            <router-link class="btn btn-info" :to="/product_edit/+product._id"> View
+                            </router-link>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

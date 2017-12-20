@@ -27,6 +27,15 @@ router.get('/', verifyToken, function (req, res) {
     // });
 });
 
+router.get('/one-product/:productId', (req, res) => {
+    Product.findOne({ _id: req.params.productId }, (err, product) => {
+        if (err)
+            res.status(500).send({ error: 'Error in finding your product' });
+        res.json({
+            product: product
+        })
+    });
+});
 router.get('/add', verifyToken, function (req, res) {
     res.render('products');
 });
@@ -56,7 +65,7 @@ router.post('/add', function (req, res) {
 
 });
 // Update product setDefaultsOnInsert:true - lookup
-router.put('/:productId', function (req, res) {
+router.put('/update/:productId', function (req, res) {
     Product.findOne({ _id: req.params.productId }, { multi: true }).exec(function (err, product) {
         if (err)
             return res.status(500).send({ error: 'Invalid ID' });
@@ -81,7 +90,7 @@ router.put('/:productId', function (req, res) {
 
 });
 
-router.delete('/:productId', function (req, res) {
+router.delete('/delete/:productId', function (req, res) {
     Product.findOneAndRemove({ _id: req.params.productId }, function (err, product) {
         if (err)
             return res.status(500).send({ error: 'Invalid product ID' });

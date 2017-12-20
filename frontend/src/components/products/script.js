@@ -61,15 +61,6 @@ export default {
             //toastr.info('Product wasn\'t deleted');
             alert('Action cancelled');
 
-        },
-        updateProduct(products, productId) {
-            axios.put('http://localhost:3000/product/' + productId)
-                .then((response) => {
-
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
         }
     }
 }

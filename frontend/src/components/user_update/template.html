@@ -1,4 +1,5 @@
 <div>
+    <router-link class="btn btn-primary pull-right" :to="/user_profile/+user._id">Back</router-link>
     <form class="form-material-animation">
         <input type="text" name="username" required autocomplete="off" v-model="user.username">
         <label for="username">Username</label>
@@ -7,11 +8,10 @@
 
         <input type="email" name="email" placeholder="email" v-model="user.email">
 
-
         <div class='divider'></div>
-
+        <!--Not working because of hash, fix me faggot -->
         <input type="password" name="password" required autocomplete="off" v-model="user.password">
         <label for="password">Password</label>
-        <button class="btn btn-success" @click.prevent="updatedUser(user._id)">Update</button>
+        <button class="btn btn-success" @click.prevent="updatedUser()">Update</button>
     </form>
 </div>

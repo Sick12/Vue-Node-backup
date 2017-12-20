@@ -3,20 +3,22 @@
         <h2>Not authorized in mortii tai!</h2>
     </div> -->
     <div>
-        <h3>Edit product:</h3>
+        <button class="btn btn-danger" @click="deleteProduct(product, product._id)">Delete</button>
+        
+        <h3>Edit {{product}} {{product.title}}}</h3>
         <form class="form-material-animation">
-            <input type="text" name="title" required autocomplete="off">
+            <input type="text" name="title" required autocomplete="off" v-model="product.title">
             <label for="title">Title</label>
 
             <div class='divider'></div>
-            <input type="text" name="price" required autocomplete="off">
+            <input type="text" name="price" required autocomplete="off" v-model="product.price">
             <label for="price">Price</label>
 
             <div class='divider'></div>
             <!-- <textarea rows="4" cols="50" name="description" v-model="Product.description"></textarea> -->
-            <input type="text" name="description" required autocomplete="off">
+            <input type="text" name="description" required autocomplete="off" v-model="product.description">
             <label for="description">Description</label>
-            <button class="btn btn-success">Add Product</button>
+            <button class="btn btn-success">Update Product</button>
         </form>
     </div>
 </div>

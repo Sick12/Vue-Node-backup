@@ -5,7 +5,6 @@ import login from '@/components/login'
 import register from '@/components/register'
 import user from '@/components/user'
 import logout from '@/components/logout'
-import test from '@/components/test'
 import products from '@/components/products'
 import product_add from '@/components/product_add'
 import product_edit from '@/components/product_edit'
@@ -43,11 +42,6 @@ export default new Router({
       component: user
     },
     {
-      path: '/test',
-      name: 'test',
-      component: test
-    },
-    {
       path: '/products',
       name: 'products',
       component: products
@@ -58,7 +52,7 @@ export default new Router({
       component: product_add
     },
     {
-      path: '/product/edit',
+      path: '/product_edit/:id',
       name: 'product_edit',
       component: product_edit
     },
