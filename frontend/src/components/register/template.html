@@ -9,9 +9,14 @@
         <label for="username">E-mail</label>
 
         <div class='divider'></div>
-        
+
         <input type="password" name="password" required autocomplete="off" v-model="User.password">
         <label for="password">Password</label>
+<!-- 
+        <div class='divider'></div>
+
+        <label for="aImage">Avatar</label>
+        <input type="file" name="aImage" required autocomplete="off" v-model="User.avatar"> -->
         <button class="btn btn-success" @click.prevent="register()">Register</button>
     </form>
 </div>

@@ -1,42 +1,28 @@
-var express = require('express');
-var router = express.Router();
-var Product = require('../models/products');
-var mongoose = require('mongoose');
-var verifyToken = require('../config/jwt-middleware');
+const express = require('express');
+const router = express.Router();
+const Product = require('../models/products');
+const mongoose = require('mongoose');
+const verifyToken = require('../config/jwt-middleware');
 
 
-router.get('/', verifyToken, function (req, res) {
+router.get('/', function (req, res) {
     // res.render('products');
 
     Product.find({}, function (err, storedProducts) {
-        if (err) {
+        if (err)
             return res.status(500).send({ error: 'Nothing to display' });
-        }
         return res.status(200).send(storedProducts);
-
     });
-    // db.collection('products').find({}).toArray(function(err, result){
-    //     if(err) throw err;
-    //     res.status(200).send(result);
-    //     db.close();
-    // });
-    // mongoose.model('Product').findOne({'title':''},  function(error, exist){
-    //     if(exist && !error) {
-    //         res.status(200).send(exist);
-    //     }
-    // });
 });
 
 router.get('/one-product/:productId', (req, res) => {
     Product.findOne({ _id: req.params.productId }, (err, product) => {
         if (err)
             res.status(500).send({ error: 'Error in finding your product' });
-        res.json({
-            product: product
-        })
+        res.status(200).send(product);
     });
 });
-router.get('/add', verifyToken, function (req, res) {
+router.get('/add', function (req, res) {
     res.render('products');
 });
 router.post('/add', function (req, res) {
@@ -48,7 +34,7 @@ router.post('/add', function (req, res) {
             }
             //console.log(doc[i].title);
         }
-        var product = new Product();
+        let product = new Product();
         product.title = req.body.title;
         product.price = req.body.price;
         if (req.body.description.length > 0)

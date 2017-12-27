@@ -44,23 +44,6 @@ export default {
             } else {
                 return false;
             }
-        },
-        deleteProduct(products, productId, index) {
-            var answer = confirm('Are you sure you want to delete this product?');
-            if (answer) {
-                axios.delete('http://localhost:3000/product/' + productId)
-                    .then((response) => {
-                        this.products.splice(index, 1);
-                        window.location.reload();
-                    })
-
-                    .catch((error) => {
-                        console.log(error);
-                    })
-            }
-            //toastr.info('Product wasn\'t deleted');
-            alert('Action cancelled');
-
         }
     }
 }

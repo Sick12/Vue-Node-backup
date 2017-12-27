@@ -50,7 +50,7 @@ export default {
             if (confirmDelete) {
                 axios.delete('http://localhost:3000/user/delete-user/' + userId)
                     .then((response) => {
-                        this.$router.push('/user');
+                        this.$router.push('/users');
                         toastr.success('User deleted');
 
                     })

@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var product = new Schema({
+const product = new Schema({
     title: {
         type: String,
         unique: true,
@@ -14,7 +14,6 @@ var product = new Schema({
     },
     description: {
         type: String,
-        //required: true,
         default: 'No description added yet.'
     }
 }, { timestamps: true });

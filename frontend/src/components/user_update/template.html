@@ -7,9 +7,9 @@
         <div class='divider'></div>
 
         <input type="email" name="email" placeholder="email" v-model="user.email">
-
+        <label for="username">E-mail</label>
         <div class='divider'></div>
-        <!--Not working because of hash, fix me faggot -->
+
         <input type="password" name="password" required autocomplete="off" v-model="user.password">
         <label for="password">Password</label>
         <button class="btn btn-success" @click.prevent="updatedUser()">Update</button>

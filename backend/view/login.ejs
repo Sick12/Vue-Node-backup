@@ -8,28 +8,11 @@
 
 <body>
     
-    <button onclick="storeToken()">add Token</button>
-    <div id="stored"></div>
-    <div id="stored2"></div>
     <form method="post" action="/user/login">
     <input type ="text" name="username" placeholder="Username" required><br>
     <input type="password" name="password" placeholder="Password" required><br><br>
     <input type="submit" value="Login" id="loginBtn">
     </form>
-    <script>
-    // var permanent = document.getElementById("stored");
-    // permanent.setItem("Character-Name","Yladriel");
-    // permanent.innerHTML = localStorage.getItem("Character-Name");
-
-    // var sessionExample = document.getElementById("stored2");
-    // sessionStorage.setItem("Alt", "Angus");
-    // sessionExample.innerHTML = sessionStorage.getItem("Alt");
-    // var loginBtn =  Element.getElementById('loginBtn');
-    // function storeToken() {
-    //     localStorage.setItem("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdpY2EiLCJpYXQiOjE1MTA3NzE1NDMsImV4cCI6MTUxMDc3NTE0M30.IXuFuoOtqP3nzuJrvdt8bJnJ00E7zPKw8SlQIgwJbbk");
-    // };
-        window.localStorage.getItem("Authorization", token);
-    </script>
 </body>
 
 </html>

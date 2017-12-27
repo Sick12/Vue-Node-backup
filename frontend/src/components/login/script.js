@@ -16,9 +16,7 @@ export default {
                 this.$bus.$emit('logged', 'User logged');
                 this.$http.get('/user');
                 this.$toastr.success('You\'re now logged in', 'Title');
-                this.$router.push('/user');
-                //console.log(headers);
-
+                this.$router.push('/users');
             })
                 .catch((error) => {
                     this.$toastr.error('Invalid credentials');

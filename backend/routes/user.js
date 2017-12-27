@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var bcrypt = require('bcryptjs');
-var jwt = require('jsonwebtoken');
-var verifyToken = require('../config/jwt-middleware');
-var secret = 'papoi';
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const verifyToken = require('../config/jwt-middleware');
+const secret = 'papoi';
 
 //Import models
 
-var User = require('../models/users');
+const User = require('../models/users');
 
 
 
@@ -45,7 +45,7 @@ router.post('/add', function (req, res) {
                 break;
             }
         }
-        var user = new User();
+        let user = new User();
         user.username = req.body.username;
         user.email = req.body.email;
         user.password = req.body.password;
@@ -74,7 +74,7 @@ router.post('/login', function (req, res) {
                 throw err;
             if (!isMatch)
                 return res.status(500).send({ error: 'Invalid password' });
-            var token = jwt.sign({ username: req.body.username }, secret, { expiresIn: '1h' });
+            var token = jwt.sign({ username: req.body.username }, secret, { expiresIn: '7h' });
             return res.json({
                 token: token
             });

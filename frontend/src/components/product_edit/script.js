@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         fetchProduct(id) {
-            //console.log(id);
+            console.log(id);
             axios.get('http://localhost:3000/product/one-product/' + id)
                 .then((response) => {
                     this.product = response.data;
@@ -22,11 +22,21 @@ export default {
                     console.log(error);
                 });
         },
-        deleteProduct() {
+        deleteProduct(productId) {
+            console.log(productId);
+            var answer = confirm('Are you sure you want to delete this product?');
+            if (answer) {
+                axios.delete('http://localhost:3000/product/delete/' + productId)
+                    .then((response) => {
+                        this.$router.push('/products');
+                        toastr.success('Product deleted');
+                    })
 
-        },
-        updateProduct() {
-
+                    .catch((error) => {
+                       // toastr.error('Product NOT deleted');
+                        console.log(error);
+                    })
+            }
         }
     }
 }

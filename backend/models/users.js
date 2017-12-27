@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs');
 
-var user = new Schema({
+let user = new Schema({
     username:
         {
             type: String,
@@ -23,16 +23,21 @@ var user = new Schema({
             type: String,
             required: true
         }
+    // avatar:
+    //     {
+    //         data: Buffer,
+    //         contentType: String
+    //     }
 
 
 }, { timestamps: true });
 
 user.pre('save', function (next) {
-    var aUser = this;
+    let user = this;
     //console.log(aUser);
 
     //only hash the password if it has been modified (or is new)
-    if (!aUser.isModified('password')) {
+    if (!user.isModified('password')) {
         //console.log('Inside NOT modified!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         return next();
     }
@@ -44,12 +49,12 @@ user.pre('save', function (next) {
         if (err)
             return next(err);
         //hash the fucking password
-        bcrypt.hash(aUser.password, salt, function (err, hash) {
+        bcrypt.hash(user.password, salt, function (err, hash) {
             //console.log('reached hash');
             if (err)
                 return next(err);
             //override the fucking password with the hashed one
-            aUser.password = hash;
+            user.password = hash;
             next();
         });
     });

@@ -31,7 +31,7 @@ export default {
             axios.put('http://localhost:3000/user/update-user/' + this.$route.params.id, update_User)
                 .then((response) => {
                     console.log(update_User);
-                    this.$router.push('/user');
+                    this.$router.push('/users');
                     toastr.success('User updated!');
 
 

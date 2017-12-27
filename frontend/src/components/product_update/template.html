@@ -1,0 +1,17 @@
+<div>
+    <router-link class="btn btn-primary pull-right" :to="/product_edit/+product._id">Back</router-link>
+    <form class="form-material-animation">
+        <input type="text" name="title" required autocomplete="off" v-model="product.title">
+        <label for="title">Title</label>
+
+        <div class='divider'></div>
+        <input type="text" name="price" required autocomplete="off" v-model="product.price">
+        <label for="price">Price</label>
+
+        <div class='divider'></div>
+        <!-- <textarea rows="4" cols="50" name="description" v-model="Product.description"></textarea> -->
+        <input type="text" name="description" required autocomplete="off" v-model="product.description">
+        <label for="description">Description</label>
+        <button class="btn btn-success" @click.prevent="updateProduct()">Update Product</button>
+    </form>
+</div>
