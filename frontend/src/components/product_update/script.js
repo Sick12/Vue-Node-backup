@@ -35,6 +35,7 @@ export default {
 
                 })
                 .catch((error) => {
+                    toastr.info('Product name already exists, choose another one'); //to be modified later
                     console.log(error);
                 });
         }
